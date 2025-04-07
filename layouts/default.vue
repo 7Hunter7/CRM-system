@@ -1,12 +1,18 @@
 <template>
   <section class="default-layout">
-    <h1>Default Layout</h1>
+    <aside>Sidebar</aside>
     <slot />
   </section>
 </template>
 
 <script setup lang="ts">
-console.log("Loaded"); // Компонент создан
+console.log("Loaded"); // Компонент создан и загружен
 </script>
 
-<style scoped></style>
+<style scoped>
+.default-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+</style>
