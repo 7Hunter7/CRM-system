@@ -1,6 +1,6 @@
 <template>
   <section class="default-layout">
-    <aside>Sidebar</aside>
+    <LayoutSidebar />
     <slot />
   </section>
 </template>
