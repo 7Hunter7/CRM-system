@@ -9,6 +9,7 @@
         class="mx-auto"
       />
     </NuxtLink>
+    <UiButton class="mb-5" variant="primary" size="lg" to="/">Главная</UiButton>
   </aside>
 </template>
 
