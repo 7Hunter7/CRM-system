@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify-json/line-md": "^1.2.5",
     "@nuxt/devtools": "latest",
     "@nuxt/icon": "^1.11.0",
     "@nuxtjs/google-fonts": "^3.1.0",
