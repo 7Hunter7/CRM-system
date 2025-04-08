@@ -29,9 +29,11 @@ module.exports = {
       "9xl": "11.4rem", // 9.5 * 1.20
     },
     extend: {
+      // Время анимации по умолчанию
       transitionDuration: {
-        DEFAULT: "333ms",
+        DEFAULT: "333ms", // 0.3s
       },
+      // Анимация по умолчанию
       transitionTimingFunction: {
         DEFAULT: "ease-in-out",
       },
