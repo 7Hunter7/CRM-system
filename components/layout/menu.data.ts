@@ -13,7 +13,6 @@ export const MENU_DATA: IMenuItem[] = [
   {
     name: "Products",
     url: "/products",
-
     icon: "ep:goods",
   },
   {
@@ -31,11 +30,9 @@ export const MENU_DATA: IMenuItem[] = [
     url: "/customers",
     icon: "mingcute:group-line",
   },
-
   {
     name: "Feedback",
     url: "/feedback",
-
     icon: "fluent:person-feedback-20-regular",
   },
   {
@@ -46,7 +43,6 @@ export const MENU_DATA: IMenuItem[] = [
   {
     name: "Help center",
     url: "/help",
-
     icon: "radix-icons:question-mark",
   },
 ];
