@@ -12,7 +12,12 @@
     <button
       class="absolute top-2 right-3 transition-colors hover:text-primerary"
       @click="$emit('close')"
-    ></button>
+    >
+      <Icon
+        name="line-md:logout
+   "
+      />
+    </button>
     <UiButton class="mb-5" var="primary" size="lg" to="/">Главная</UiButton>
   </aside>
 </template>
