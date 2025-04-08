@@ -6,7 +6,7 @@
       :key="item.name"
       :to="item.url"
     >
-      <Icon name="item.icon" class="mr-3" size="20px" />
+      <Icon :name="item.icon" class="mr-3" size="20px" />
       <span>{{ item.name }}</span>
     </NuxtLink>
   </div>
