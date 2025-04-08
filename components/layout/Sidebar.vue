@@ -9,6 +9,10 @@
         class="mx-auto"
       />
     </NuxtLink>
+    <button
+      class="absolute top-2 right-3 transition-colors hover:text-primerary"
+      @click="$emit('close')"
+    ></button>
     <UiButton class="mb-5" var="primary" size="lg" to="/">Главная</UiButton>
   </aside>
 </template>
