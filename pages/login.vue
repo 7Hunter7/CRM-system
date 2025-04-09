@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useIsLoadingStore } from "@/store/auth.store";
 
 useHead({
   title: "CRM System | Login",
@@ -42,6 +43,8 @@ useHead({
 const name = ref<string>("");
 const email = ref<string>("");
 const password = ref<string>("");
+const isLoading = useIsLoadingStore();
+const router = useRouter();
 </script>
 
 <style scoped lang="scss"></style>
