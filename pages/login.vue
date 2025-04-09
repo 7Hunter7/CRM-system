@@ -43,8 +43,40 @@ useHead({
 const name = ref<string>("");
 const email = ref<string>("");
 const password = ref<string>("");
-const isLoading = useIsLoadingStore();
+
+const isLoadingStore = useIsLoadingStore();
+const authStore = useAuthStore();
 const router = useRouter();
+
+// Функция для обработки входа в систему
+const login = async () => {
+  isLoadingStore.set(true);
+  try {
+    await account.createEmailSession({
+      email: email.value,
+      password: password.value,
+    });
+    // Получаем информацию о пользователе после успешного входа
+    const response = await account.get();
+    if (response) {
+      authStore.setUser({
+        name: response.name,
+        email: response.email,
+        status: response.status,
+      });
+    }
+    // Сброс полей ввода после успешного входа
+    name.value = "";
+    email.value = "";
+    password.value = "";
+
+    await router.push("/");
+  } catch (error) {
+    console.error("Login error:", error);
+  } finally {
+    isLoadingStore.set(false);
+  }
+};
 </script>
 
 <style scoped lang="scss"></style>
