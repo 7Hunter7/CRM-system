@@ -77,6 +77,38 @@ const login = async () => {
     isLoadingStore.set(false);
   }
 };
+
+// Функция для обработки регистрации
+const register = async () => {
+  isLoadingStore.set(true);
+  try {
+    await account.create({
+      userId: uuid(),
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    });
+    // Получаем информацию о пользователе после успешной регистрации
+    const response = await account.get();
+    if (response) {
+      authStore.setUser({
+        name: response.name,
+        email: response.email,
+        status: response.status,
+      });
+    }
+    // Сброс полей ввода после успешной регистрации
+    name.value = "";
+    email.value = "";
+    password.value = "";
+
+    await router.push("/");
+  } catch (error) {
+    console.error("Registration error:", error);
+  } finally {
+    isLoadingStore.set(false);
+  }
+};
 </script>
 
 <style scoped lang="scss"></style>
