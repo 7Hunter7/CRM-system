@@ -31,7 +31,7 @@
     "@nuxt/ui": "^2.11.0",
     "@pinia/nuxt": "^0.5.1",
     "@radix-icons/vue": "^1.0.0",
-    "@tanstack/vue-query": "^5.12.2",
+    "@tanstack/vue-query": "^5.73.0",
     "@vee-validate/nuxt": "^4.12.2",
     "@vueuse/core": "^10.11.1",
     "appwrite": "^13.0.2",
