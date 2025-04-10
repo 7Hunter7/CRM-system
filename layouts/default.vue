@@ -1,6 +1,7 @@
 <template>
-  <section class="default-layout">
-    <LayoutSidebar />
+  <LayoutLoader v-if="isLoadingStore.isLoading" />
+  <section v-else :class="{ grid: authStore.isAuth }">
+    <LayoutSidebar v-if="authStore.isAuth" />
     <slot />
   </section>
 </template>
@@ -33,7 +34,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.default-layout {
+.grid {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 6fr;
