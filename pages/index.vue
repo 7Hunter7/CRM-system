@@ -10,6 +10,8 @@
 </template>
 
 <script setup lang="ts">
+import type { ICard, IColumn } from "@/components/kanban/kanban.types";
+
 useHead({
   title: "CRM System | Home",
   meta: [
@@ -19,6 +21,9 @@ useHead({
     },
   ],
 });
+
+const dragCardRef = ref<ICard | null>(null); // Карточка draggable
+const sourceColumnRef = ref<IColumn | null>(null); // Исходная колонка
 </script>
 
 <style scoped lang="scss"></style>
