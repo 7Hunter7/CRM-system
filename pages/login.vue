@@ -30,8 +30,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useIsLoadingStore } from "@/store/auth.store";
-import { useAuthStore } from "@/store/auth.store";
+import { account } from "@/utils/appwrite";
+import { useAuthStore, useIsLoadingStore } from "@/store/auth.store";
 import { useRouter } from "vue-router";
 import { v4 as uuidv4 } from "uuid"; // uuid для генерации уникальных идентификаторов
 
