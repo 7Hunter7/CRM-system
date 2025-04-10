@@ -18,8 +18,10 @@
           v-model="password"
         />
         <div class="flex items-center justify-center gap-5">
-          <UiButton type="button"> Login </UiButton>
-          <UiButton type="button" variant="secondary"> Register </UiButton>
+          <UiButton type="button" @click="login"> Login </UiButton>
+          <UiButton type="button" variant="secondary" @click="register">
+            Register
+          </UiButton>
         </div>
       </form>
     </div>
@@ -29,6 +31,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useIsLoadingStore } from "@/store/auth.store";
+import { v4 as uuidv4 } from "uuid"; // uuid для генерации уникальных идентификаторов
 
 useHead({
   title: "CRM System | Login",
@@ -52,10 +55,7 @@ const router = useRouter();
 const login = async () => {
   isLoadingStore.set(true);
   try {
-    await account.createEmailSession({
-      email: email.value,
-      password: password.value,
-    });
+    await account.createEmailSession(email.value, password.value);
     // Получаем информацию о пользователе после успешного входа
     const response = await account.get();
     if (response) {
@@ -80,33 +80,13 @@ const login = async () => {
 
 // Функция для обработки регистрации
 const register = async () => {
-  isLoadingStore.set(true);
   try {
-    await account.create({
-      userId: uuid(),
-      name: name.value,
-      email: email.value,
-      password: password.value,
-    });
-    // Получаем информацию о пользователе после успешной регистрации
-    const response = await account.get();
-    if (response) {
-      authStore.setUser({
-        name: response.name,
-        email: response.email,
-        status: response.status,
-      });
-    }
-    // Сброс полей ввода после успешной регистрации
-    name.value = "";
-    email.value = "";
-    password.value = "";
-
-    await router.push("/");
+    // Cоздаем нового пользователя
+    await account.create(uuidv4(), email.value, password.value, name.value);
+    // Создаем сессию для нового пользователя
+    await login();
   } catch (error) {
     console.error("Registration error:", error);
-  } finally {
-    isLoadingStore.set(false);
   }
 };
 </script>
