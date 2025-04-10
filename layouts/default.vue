@@ -18,9 +18,14 @@ const router = useRouter();
 onMounted(async () => {
   try {
     const user = await account.get();
+    console.log("User in response(onMounted):", user);
     if (user) {
       // Сохраняем пользователя в store
-      authStore.setUser(user);
+      authStore.setUser({
+        name: user.name,
+        email: user.email,
+        status: true,
+      });
     } else {
       router.push("/login");
     }
