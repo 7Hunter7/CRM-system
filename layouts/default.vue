@@ -10,6 +10,7 @@
 import { account } from "@/utils/appwrite";
 import { useAuthStore, useIsLoadingStore } from "@/store/auth.store";
 import { useRouter } from "vue-router";
+import { onMounted } from "vue";
 
 const isLoadingStore = useIsLoadingStore();
 const authStore = useAuthStore();
@@ -24,7 +25,7 @@ onMounted(async () => {
       authStore.setUser({
         name: user.name,
         email: user.email,
-        status: true,
+        status: user.status ? user.status : true,
       });
     } else {
       router.push("/login");
