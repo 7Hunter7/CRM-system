@@ -9,6 +9,16 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: "CRM System | Home",
+  meta: [
+    {
+      name: "description",
+      content: "Home page for CRM System",
+    },
+  ],
+});
+</script>
 
 <style scoped lang="scss"></style>
