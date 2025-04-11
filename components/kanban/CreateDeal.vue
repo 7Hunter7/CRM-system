@@ -48,6 +48,30 @@ interface IDealFormState extends Pick<IDeal, "name" | "price"> {
   };
   status: string;
 }
+
+const { handleSubmit, defineField, handleReset } = useForm<IDealFormState>({
+  initialValues: {
+    status: props.status,
+  },
+});
+
+const [name, nameAttrs] = defineField("name");
+const [price, priceAttrs] = defineField("price");
+const [customerEmail, customerEmailAttrs] = defineField("customer.email");
+const [customerName, customerNameAttrs] = defineField("customer.name");
+
+const { mutate, isPending } = useMutation({
+  mutationKey: ["create a new deal"],
+  mutationFn: (data: IDealFormState) =>
+    DB.createDocument(DB_ID, COLLECTION_DEALS, uuidv4(), data),
+  onSuccess: () => {
+    props.refetch && props.refetch(); // Обновление данных после успеш создания сделки
+    handleReset(); // Сброс формы
+  },
+});
+
+// Отправка данных формы
+const onSubmit = handleSubmit((values) => mutate(values));
 </script>
 
 <style scoped>
