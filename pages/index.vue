@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import type { ICard, IColumn } from "@/components/kanban/kanban.types";
+import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
 
 useHead({
   title: "CRM System | Home",
@@ -24,6 +25,8 @@ useHead({
 
 const dragCardRef = ref<ICard | null>(null); // Карточка draggable
 const sourceColumnRef = ref<IColumn | null>(null); // Исходная колонка
+
+useKanbanQuery(); // Запрос на получение данных Kanban
 </script>
 
 <style scoped lang="scss"></style>
