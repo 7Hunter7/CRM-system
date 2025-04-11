@@ -9,6 +9,7 @@
             {{ column.name }}
           </div>
           <div>
+            <KanbanCreateDeal @refetch="refetch" :status="column.id" />
             <UiCard
               v-for="card in column.items"
               :key="card.id"

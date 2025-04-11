@@ -8,13 +8,13 @@
         v-if="isOpenForm"
         name="radix-icons:arrow-up"
         class="fade-in-100 fade-out-0"
-        size="25px"
+        size="35px"
       />
       <Icon
         v-else
         name="radix-icons:plus-circled"
         class="fade-in-100 fade-out-0"
-        size="25px"
+        size="35px"
       />
     </button>
   </div>
