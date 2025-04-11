@@ -13,7 +13,7 @@
             <UiCard
               v-for="card in column.items"
               :key="card.id"
-              class="mb-3"
+              class="mb-5"
               draggable="true"
             >
               <UiCardHeader role="button">
