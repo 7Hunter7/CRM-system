@@ -1,4 +1,4 @@
-// Интерфейсы для работы с сделками
+// Интерфейсы для работы со сделками
 
 // Интерфейс базовых полей
 export interface IBaseField {
@@ -19,7 +19,7 @@ export interface IComment extends IBaseField {
   text: string;
 }
 
-// Интерфейс для работы с сделками (статусы)
+// Интерфейс статуса
 export enum EnumStatus {
   "todo" = "todo",
   "to-be-agreed" = "to-be-agreed",
@@ -28,7 +28,7 @@ export enum EnumStatus {
   "done" = "done",
 }
 
-// Интерфейс для работы с сделками
+// Интерфейс сделки
 export interface IDeal extends IBaseField {
   comments: IComment[];
   customer: ICustomer;
