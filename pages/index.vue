@@ -19,7 +19,7 @@
               <UiCardDescription>
                 {{ convertCurrency(card.price) }}
               </UiCardDescription>
-              <UiCardContent> {{ card.companyName }} </UiCardContent>
+              <UiCardContent> Компания {{ card.companyName }} </UiCardContent>
               <UiCardFooter>
                 {{ dayjs(card.$createdAt).format("DD MMMM YYYY") }}
               </UiCardFooter>
