@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import type { ICard, IColumn } from "@/components/kanban/kanban.types";
 import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
+import { convertCurrency } from "@/utils/convertCurrency";
 
 useHead({
   title: "CRM System | Home",
