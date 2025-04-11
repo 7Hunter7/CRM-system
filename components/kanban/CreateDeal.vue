@@ -27,6 +27,15 @@ import { COLLECTION_DEALS, DB_ID } from "@/app.constants";
 import type { IDeal } from "@/types/deals.types";
 
 const isOpenForm = ref<boolean>(false); // Состояние открытия формы
+
+// Интерфейс формы сделки
+interface IDealFormState extends Pick<IDeal, "name" | "price"> {
+  customer: {
+    email: string;
+    name: string;
+  };
+  status: string;
+}
 </script>
 
 <style scoped>
