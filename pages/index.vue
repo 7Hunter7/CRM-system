@@ -4,15 +4,23 @@
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
-        <div v-for="(column, index) in data" key="column.id">
+        <div v-for="(column, index) in data" :key="column.id">
           <div class="rounded bg-slate-700 py-1 px-5 mb-2 text-center">
             {{ column.name }}
           </div>
           <div>
-            <UiCard class="mb-3" draggable="true">
-              <UiCardHeader role="button"> Card name </UiCardHeader>
-              <UiCardContent> Компания </UiCardContent>
-              <UiCardFooter> Date </UiCardFooter>
+            <UiCard
+              v-for="card in column.items"
+              :key="card.id"
+              class="mb-3"
+              draggable="true"
+            >
+              <UiCardHeader role="button"> {{ card.name }} </UiCardHeader>
+              <UiCardDescription>
+                {{ convertCurrency(card.price) }}
+              </UiCardDescription>
+              <UiCardContent> {{ card.companyName }} </UiCardContent>
+              <UiCardFooter> {{ card.$createdAt }} </UiCardFooter>
             </UiCard>
           </div>
         </div>
