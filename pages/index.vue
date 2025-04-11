@@ -20,7 +20,9 @@
                 {{ convertCurrency(card.price) }}
               </UiCardDescription>
               <UiCardContent> {{ card.companyName }} </UiCardContent>
-              <UiCardFooter> {{ card.$createdAt }} </UiCardFooter>
+              <UiCardFooter>
+                {{ dayjs(card.$createdAt).format("DD MMMM YYYY") }}
+              </UiCardFooter>
             </UiCard>
           </div>
         </div>
@@ -33,6 +35,7 @@
 import type { ICard, IColumn } from "@/components/kanban/kanban.types";
 import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
 import { convertCurrency } from "@/utils/convertCurrency";
+import dayjs from "dayjs"; // Импорт dayjs для форматирования даты
 
 useHead({
   title: "CRM System | Home",
