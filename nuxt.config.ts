@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@pinia/nuxt",
     "dayjs-nuxt",
+    "@vee-validate/nuxt",
   ],
 
   shadcn: {
