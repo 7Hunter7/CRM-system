@@ -28,3 +28,37 @@ import type { IDeal } from "@/types/deals.types";
 
 const isOpenForm = ref<boolean>(false); // Состояние открытия формы
 </script>
+
+<style scoped>
+.input {
+  @apply border-[#161c26] mb-2 placeholder:text-[#748092] focus:border-border transition-colors;
+}
+
+.btn {
+  @apply text-xs border py-1 px-2 rounded border-[#161c26] hover:border-[#482c65] transition-colors text-[#aebed5] hover:text-white;
+}
+
+.form {
+  @apply mb-3 block;
+  animation: show 0.3s ease-in-out;
+}
+
+/* Анимация появления формы */
+@keyframes show {
+  from {
+    @apply border-[#a252c83d];
+    transform: translateY(-35px);
+    opacity: 0.4;
+  }
+
+  90% {
+    @apply border-[#a252c83d];
+  }
+
+  to {
+    @apply border-transparent;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
