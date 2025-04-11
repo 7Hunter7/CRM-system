@@ -18,6 +18,40 @@
       />
     </button>
   </div>
+  <form v-if="isOpenForm" @submit="onSubmit" class="form">
+    <UiInput
+      placeholder="Наименование"
+      type="text"
+      v-model="name"
+      v-bind="nameAttrs"
+      class="input"
+    ></UiInput>
+    <UiInput
+      placeholder="Стоимость"
+      type="text"
+      v-model="price"
+      v-bind="priceAttrs"
+      class="input"
+    ></UiInput>
+    <UiInput
+      placeholder="Email"
+      type="text"
+      v-model="customerEmail"
+      v-bind="customerEmailAttrs"
+      class="input"
+    ></UiInput>
+    <UiInput
+      placeholder="Компания"
+      type="text"
+      v-model="customerName"
+      v-bind="customerNameAttrs"
+      class="input"
+    ></UiInput>
+
+    <button class="btn" :disabled="isPending" type="submit">
+      {{ isPending ? "Загрузка..." : "Добавить" }}
+    </button>
+  </form>
 </template>
 
 <script setup lang="ts">
