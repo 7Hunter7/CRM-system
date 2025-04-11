@@ -26,6 +26,18 @@ import { v4 as uuidv4 } from "uuid";
 import { COLLECTION_DEALS, DB_ID } from "@/app.constants";
 import type { IDeal } from "@/types/deals.types";
 
+const props = defineProps({
+  status: {
+    type: String,
+    required: true,
+    default: "",
+  },
+  refetch: {
+    type: Function,
+    required: true,
+  },
+});
+
 const isOpenForm = ref<boolean>(false); // Состояние открытия формы
 
 // Интерфейс формы сделки
