@@ -15,11 +15,15 @@
               class="mb-3"
               draggable="true"
             >
-              <UiCardHeader role="button"> {{ card.name }} </UiCardHeader>
-              <UiCardDescription>
-                {{ convertCurrency(card.price) }}
-              </UiCardDescription>
-              <UiCardContent> Компания {{ card.companyName }} </UiCardContent>
+              <UiCardHeader role="button">
+                <UiCardTitle>{{ card.name }}</UiCardTitle>
+                <UiCardDescription>
+                  {{ convertCurrency(card.price) }}
+                </UiCardDescription>
+              </UiCardHeader>
+              <UiCardContent class="text-xs">
+                Компания {{ card.companyName }}
+              </UiCardContent>
               <UiCardFooter>
                 {{ dayjs(card.$createdAt).format("DD MMMM YYYY") }}
               </UiCardFooter>
