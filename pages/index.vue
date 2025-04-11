@@ -1,6 +1,7 @@
 <template>
   <div class="p-10">
     <h1 class="font-bold text-2xl mb-10">CRM System</h1>
+    <div v-if="isLoading">Loading...</div>
     <UiCard class="mb-3" draggable="true">
       <UiCardHeader role="button"> Card name </UiCardHeader>
       <UiCardContent> Компания </UiCardContent>
@@ -26,7 +27,7 @@ useHead({
 const dragCardRef = ref<ICard | null>(null); // Карточка draggable
 const sourceColumnRef = ref<IColumn | null>(null); // Исходная колонка
 
-useKanbanQuery(); // Запрос на получение данных Kanban
+const { data, isLoading, refetch } = useKanbanQuery(); // Запрос на получение данных Kanban
 </script>
 
 <style scoped lang="scss"></style>
