@@ -23,7 +23,7 @@ export function useKanbanQuery() {
         if (column) {
           column.items.push({
             $createdAt: deal.$createdAt,
-            id: deal.id,
+            id: deal.$id,
             name: deal.name,
             price: deal.price,
             companyName: deal.customer.name,

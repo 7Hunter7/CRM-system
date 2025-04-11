@@ -28,7 +28,8 @@
     ></UiInput>
     <UiInput
       placeholder="Стоимость"
-      type="text"
+      type="number"
+      min="0"
       v-model="price"
       v-bind="priceAttrs"
       class="input"
