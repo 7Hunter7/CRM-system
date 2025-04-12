@@ -4,7 +4,12 @@
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
-        <div v-for="(column, index) in data" :key="column.id">
+        <div
+          v-for="(column, index) in data"
+          :key="column.id"
+          @dragover="handlerDragOver"
+          @drop="handlerDrop(column)"
+        >
           <div class="rounded bg-slate-700 py-1 px-5 mb-2 text-center">
             {{ column.name }}
           </div>
@@ -15,6 +20,7 @@
               :key="card.id"
               class="mb-5"
               draggable="true"
+              @dragstart="handlerDragStart(card, column)"
             >
               <UiCardHeader role="button">
                 <UiCardTitle>{{ card.name }}</UiCardTitle>
@@ -83,13 +89,13 @@ function handlerDragStart(card: ICard, column: IColumn) {
   sourceColumnRef.value = column; // Сохраняем исходную колонку
 }
 
-// Функция для обработки завершения перетаскивания карточки
+// Функция для обработки перетаскивания карточки
 function handlerDragOver(event: DragEvent) {
   event.preventDefault(); // Предотвращаем стандартное поведение браузера
 }
 
-// Функция для обработки перетаскивания карточки
-function handlerDrag(targetColumn: IColumn) {
+// Функция для обработки сброса карточки в другую колонку
+function handlerDrop(targetColumn: IColumn) {
   // Проверяем, что карточка и исходная колонка существуют
   if (dragCardRef.value && sourceColumnRef.value) {
     // Проверяем, что статус карточки отличается от статуса целевой колонки
