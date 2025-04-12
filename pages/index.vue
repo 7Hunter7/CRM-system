@@ -38,7 +38,9 @@
 import type { ICard, IColumn } from "@/components/kanban/kanban.types";
 import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
 import { convertCurrency } from "@/utils/convertCurrency";
+import { useMutation } from "@tanstack/vue-query";
 import dayjs from "dayjs"; // Импорт dayjs для форматирования даты
+import { DB_ID, COLLECTION_DEALS } from "@/app.constants";
 
 useHead({
   title: "CRM System | Home",
@@ -53,7 +55,27 @@ useHead({
 const dragCardRef = ref<ICard | null>(null); // Карточка draggable
 const sourceColumnRef = ref<IColumn | null>(null); // Исходная колонка
 
-const { data, isLoading, refetch } = useKanbanQuery(); // Запрос на получение данных Kanban
+// Запрос на получение данных Kanban
+const { data, isLoading, refetch } = useKanbanQuery();
+
+// Переменная для хранения карточки, которую мы перетаскиваем
+type TypeMutationVariables = {
+  docId: string;
+  status?: string;
+};
+
+// Запрос на изменение данных Kanban
+const { mutate } = useMutation({
+  mutationKey: ["move card"],
+
+  mutationFn: ({ docId, status }: TypeMutationVariables) =>
+    DB.updateDocument(DB_ID, COLLECTION_DEALS, docId, {
+      status,
+    }),
+  onSuccess: () => {
+    refetch(); // Обновляем данные после успешного изменения
+  },
+});
 </script>
 
 <style scoped lang="scss"></style>
