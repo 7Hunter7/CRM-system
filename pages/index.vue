@@ -76,6 +76,32 @@ const { mutate } = useMutation({
     refetch(); // Обновляем данные после успешного изменения
   },
 });
+
+// Функция для обработки начала перетаскивания карточки
+function handlerDragStart(card: ICard, column: IColumn) {
+  dragCardRef.value = card; // Сохраняем карточку, которую перетаскиваем
+  sourceColumnRef.value = column; // Сохраняем исходную колонку
+}
+
+// Функция для обработки завершения перетаскивания карточки
+function handlerDragOver(event: DragEvent) {
+  event.preventDefault(); // Предотвращаем стандартное поведение браузера
+}
+
+// Функция для обработки перетаскивания карточки
+function handlerDrag(targetColumn: IColumn) {
+  // Проверяем, что карточка и исходная колонка существуют
+  if (dragCardRef.value && sourceColumnRef.value) {
+    // Проверяем, что статус карточки отличается от статуса целевой колонки
+    if (dragCardRef.value.status !== targetColumn.id) {
+      // Вызываем мутацию для изменения статуса карточки
+      mutate({
+        docId: dragCardRef.value.id,
+        status: targetColumn.id,
+      });
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss"></style>
