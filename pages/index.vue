@@ -9,6 +9,7 @@
           :key="column.id"
           @dragover="handlerDragOver"
           @drop="handlerDrop(column)"
+          class="min-h-screen"
         >
           <div
             class="rounded bg-slate-700 py-1 px-5 mb-2 text-center"
