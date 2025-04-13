@@ -2,7 +2,7 @@
   <UiInput
     placeholder="Оставьте комментарий"
     v-model="commentRef"
-    @keyup.enter="writeComment()"
+    @keyup.enter="writeComment"
   ></UiInput>
   <UiSkeleton v-if="isLoading" class="w-full h-[76px] rounted mt-5" />
   <div v-else-if="card">
@@ -30,7 +30,7 @@ import { useCommentsByDeal } from "./useCommentsByDeal";
 import { useCreateComment } from "./useCreateComment";
 
 const { data, refetch, isLoading } = useCommentsByDeal();
-const { commentRef, writeComment } = useCreateComment(refetch);
+const { commentRef, writeComment } = useCreateComment({ refetch });
 
 const card = data as unknown as IDeal; // Типизация для AppWrite
 </script>
