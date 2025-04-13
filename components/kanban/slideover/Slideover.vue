@@ -10,7 +10,7 @@
         }"
       >
         <template #header>
-          <KanbanSlideoverTop />
+          <KanbanSlideoverHeader />
         </template>
         <KanbanSlideoverComments />
       </UCard>
