@@ -11,7 +11,7 @@ export function useCommentsByDeal() {
   return useQuery({
     queryKey: ["deal", cardId],
     queryFn: () => {
-      DB.getDocument(DB_ID, COLLECTION_DEALS, cardId as string);
+      DB.getDocument(DB_ID, COLLECTION_DEALS, cardId);
     },
   });
 }
