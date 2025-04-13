@@ -18,5 +18,3 @@ const props = defineProps({
   },
 });
 </script>
-
-<script setup lang="ts"></script>

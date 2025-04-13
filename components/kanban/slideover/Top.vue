@@ -32,5 +32,3 @@ import { convertCurrency } from "@/utils/convertCurrency";
 const store = useDealsSlideStore();
 const { card } = storeToRefs(store);
 </script>
-
-<script setup lang="ts"></script>
