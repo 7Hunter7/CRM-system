@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/vue-query";
 import { COLLECTION_DEALS, DB_ID } from "@/app.constants";
 import { KANBAN_DATA } from "./kanban.data";
-import type { ICard } from "./kanban.types";
+import type { IColumn, ICard } from "./kanban.types";
 
 export function useKanbanQuery() {
   // Используем useQuery для получения данных из базы данных
@@ -11,7 +11,12 @@ export function useKanbanQuery() {
 
     // Функция для обработки данных после их получения
     select(data) {
-      const newBoard = [...KANBAN_DATA];
+      // Создаем новый массив колонок с пустыми массивами для сделок
+      const newBoard: IColumn[] = KANBAN_DATA.map((column) => ({
+        ...column,
+        items: [], // Инициализируем пустой массив для сделок
+      }));
+
       const deals = data.documents as unknown as ICard[];
 
       console.log("deals: ", deals);
