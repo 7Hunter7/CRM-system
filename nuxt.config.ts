@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   // Подключаем модули
   modules: [
     "@nuxt/image",
-    "@nuxtjs/tailwindcss",
+    "@nuxt/ui",
     "shadcn-nuxt",
     [
       "@nuxtjs/google-fonts",
@@ -27,7 +27,6 @@ export default defineNuxtConfig({
         autoImports: true,
       },
     ],
-    "@nuxt/ui",
   ],
 
   shadcn: {
