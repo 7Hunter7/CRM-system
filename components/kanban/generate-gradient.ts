@@ -6,7 +6,7 @@ export const generateColumnGradient = (index: number, total = 1) => {
   const step = (30 - 5) / (total - 1);
   // Прозрачность градиента
   const opacity = 5 + step * index;
-  // Оттенок, насыщенность и яркость
+  // Оттенок, насыщенность, яркость и прозрачность
   return {
     backgroundColor: `hsla(280, 52%, ${intensity}%, 30%)`,
   };
