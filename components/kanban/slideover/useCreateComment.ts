@@ -4,12 +4,12 @@ import { DB_ID, COLLECTION_COMMENTS } from "@/app.constants";
 import { useDealsSlideStore } from "@/store/deal-slide.store";
 
 // Функция для создания коментария к сделке
-export function useCreateComment(refetch: () => void) {
+export function useCreateComment({ refetch }: { refetch: () => void }) {
   const store = useDealsSlideStore();
   const commentRef = ref<string>(""); // Ссылка на текст комментария
 
   const { mutate } = useMutation({
-    mutationKey: ["add comment", commentRef.value],
+    mutationKey: ["add comments", commentRef.value],
     mutationFn: () =>
       DB.createDocument(DB_ID, COLLECTION_COMMENTS, uuid(), {
         text: commentRef.value,
