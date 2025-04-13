@@ -27,6 +27,7 @@ export default defineNuxtConfig({
         autoImports: true,
       },
     ],
+    "@nuxt/ui",
   ],
 
   shadcn: {
