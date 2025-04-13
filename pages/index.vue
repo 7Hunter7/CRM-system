@@ -10,7 +10,10 @@
           @dragover="handlerDragOver"
           @drop="handlerDrop(column)"
         >
-          <div class="rounded bg-slate-700 py-1 px-5 mb-2 text-center">
+          <div
+            class="rounded bg-slate-700 py-1 px-5 mb-2 text-center"
+            :style="generateColumnGradient(index, data?.length)"
+          >
             {{ column.name }}
           </div>
           <div>
@@ -47,6 +50,7 @@ import { convertCurrency } from "@/utils/convertCurrency";
 import { useMutation } from "@tanstack/vue-query";
 import dayjs from "dayjs"; // Импорт dayjs для форматирования даты
 import { DB_ID, COLLECTION_DEALS } from "@/app.constants";
+import { generateColumnGradient } from "@/components/kanban/generate-gradient";
 
 useHead({
   title: "CRM System | Home",
