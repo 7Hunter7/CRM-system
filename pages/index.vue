@@ -26,7 +26,7 @@
               draggable="true"
               @dragstart="handlerDragStart(card, column)"
             >
-              <UiCardHeader role="button">
+              <UiCardHeader role="button" @click="store.set(card)">
                 <UiCardTitle>{{ card.name }}</UiCardTitle>
                 <UiCardDescription>
                   {{ convertCurrency(card.price) }}
@@ -40,6 +40,7 @@
           </div>
         </div>
       </div>
+      <KanbanSlideover />
     </div>
   </div>
 </template>
@@ -52,6 +53,9 @@ import { useMutation } from "@tanstack/vue-query";
 import dayjs from "dayjs"; // Импорт dayjs для форматирования даты
 import { DB_ID, COLLECTION_DEALS } from "@/app.constants";
 import { generateColumnGradient } from "@/components/kanban/generate-gradient";
+import { useDealsSlideStore } from "@/store/deal-slide.store";
+
+const store = useDealsSlideStore();
 
 useHead({
   title: "CRM System | Home",
