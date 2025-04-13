@@ -12,7 +12,7 @@
         <template #header>
           <KanbanSlideoverTop />
         </template>
-        <KanbanSledeoverComments />
+        <KanbanSlideoverComments />
       </UCard>
     </USlideover>
   </div>
