@@ -1,8 +1,7 @@
 <template>
   <div class="p-10">
-    <h1 class="font-bold text-2xl text-center mb-10">Наши клиенты</h1>
+    <h1 class="font-bold text-2xl mb-10">Наши клиенты</h1>
     <div v-if="isLoading">Loading...</div>
-
     <UiTable v-else>
       <UiTableHeader>
         <UiTableRow>
@@ -62,5 +61,5 @@ const { data, isLoading } = useQuery({
   },
 });
 
-const customers = data?.value?.documents as unknown as ICustomer[];
+const customers = data?.value?.documents as unknown as ICustomer[]; // Типизация
 </script>
