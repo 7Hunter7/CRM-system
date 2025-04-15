@@ -15,7 +15,26 @@
       <UiTableBody>
         <UiTableRow v-for="customer in customers" :key="customer.$id">
         </UiTableRow>
-        <UiTableCell> </UiTableCell>
+        <UiTableCell>
+          <NuxtLink :href="`/customers/edit/${customer.$id}`">
+            <NuxtImg
+              :src="customer.avatar_url"
+              :alt="customer.name"
+              width="50"
+              height="50"
+              class="routed-full"
+            />
+          </NuxtLink>
+        </UiTableCell>
+        <UiTableCell class="font-medium">
+          {{ customer.name }}
+        </UiTableCell>
+        <UiTableCell>
+          {{ customer.email }}
+        </UiTableCell>
+        <UiTableCell>
+          {{ customer.from_source }}
+        </UiTableCell>
       </UiTableBody>
     </UiTable>
   </div>
@@ -23,7 +42,7 @@
 
 <script setup lang="ts">
 import { useQuery } from "@tanstack/vue-query";
-import { DB_ID, COLLECTION_COMMENTS } from "~/app.constants";
+import { DB_ID, COLLECTION_CUSTOMERS } from "@/app.constants";
 import type { ICustomer } from "@/types/deals.types";
 
 useHead({
@@ -39,7 +58,7 @@ useHead({
 const { data, isLoading } = useQuery({
   queryKey: ["customers"],
   queryFn: () => {
-    DB.listDocuments(DB_ID, COLLECTION_COMMENTS);
+    DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS);
   },
 });
 
