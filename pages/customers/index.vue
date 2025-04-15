@@ -5,14 +5,17 @@
     <UiTable v-else>
       <UiTableHeader>
         <UiTableRow>
-          <UiTableHead class="w-[80px]">Изображение</UiTableHead>
+          <UiTableHead class="w-[140px]">Изображение</UiTableHead>
           <UiTableHead class="w-[200px]">Наименование</UiTableHead>
           <UiTableHead class="w-[200px]">Email</UiTableHead>
           <UiTableHead>Откуда пришел</UiTableHead>
         </UiTableRow>
       </UiTableHeader>
       <UiTableBody>
-        <UiTableRow v-for="customer in customers" :key="customer.$id">
+        <UiTableRow
+          v-for="customer in (customers?.documents as unknown as ICustomer[])"
+          :key="customer.$id"
+        >
         </UiTableRow>
         <UiTableCell>
           <NuxtLink :href="`/customers/edit/${customer.$id}`">
@@ -54,12 +57,10 @@ useHead({
   ],
 });
 
-const { data, isLoading } = useQuery({
+const { data: customers, isLoading } = useQuery({
   queryKey: ["customers"],
   queryFn: () => {
     DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS);
   },
 });
-
-const customers = data?.value?.documents as unknown as ICustomer[]; // Типизация
 </script>
