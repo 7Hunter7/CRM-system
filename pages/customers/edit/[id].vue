@@ -56,3 +56,9 @@ const onSubmit = handleSubmit(values => {
   mutate(values)
 });
 </script>
+
+<style scoped>
+.input {
+	@apply border-[#161c26] mb-4 placeholder:text-[#748092] focus:border-border transition-colors;
+}
+</style>
