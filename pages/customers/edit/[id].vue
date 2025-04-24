@@ -1,4 +1,38 @@
-<template></template>
+<template>
+  <div class="p-10">
+    <h1 class="font-bold text-2xl mb-10">
+      Редактирование {{ (data as unknown as ICustomerFromState)?.name }}
+    </h1>
+
+    <form @submit="onSubmit" class="form">
+      <UiInput
+        type="text"
+        placeholder="Наименование"
+        v-model="name"
+        v-bind="nameAttrs"
+        class="input"
+      />
+      <UiInput
+        type="text"
+        placeholder="Email"
+        v-model="email"
+        v-bind="emailAttrs"
+        class="input"
+      />
+      <UiInput
+        type="text"
+        placeholder="Откуда пришел?"
+        v-model="fromSource"
+        v-bind="fromSourceAttrs"
+        class="input"
+      />
+
+      <UiButton :disabled="isPending" variant="secondary" class="mt-3">
+        {{ isPending ? 'Загрузка...' : 'Сохранить' }}
+        </UiButton>
+    </form>
+  </div>
+</template>
 
 <script setup lang="ts">
 import { v4 as uuidv4 } from "uuid";
@@ -6,6 +40,7 @@ import { storage} from '@/utils/appwrite'
 import { useMutation, useQuery } from "@tanstack/vue-query";
 import { DB_ID, COLLECTION_CUSTOMERS, STORAGE_ID } from "@/app.constants";
 import type { ICustomer } from "@/types/deals.types";
+import { _disabled } from "#tailwind-config/theme/aria";
 
 interface ICustomerFromState 
   extends Pick<ICustomer, 'avatar_url' | 'email' | 'name' | 'from_source'> {};
