@@ -26,7 +26,7 @@ const customerId = route.params.id as string;
 const { handleSubmit, defineField, setFieldValue, setValues, values } = useForm<ICustomerFromState>();
 
 const { data, isSuccess } = useQuery({
-  queryKey: ['get customer', customerId ],
+  queryKey: ['get customer', customerId],
   queryFn: () => DB.getDocument(DB_ID, COLLECTION_CUSTOMERS, customerId)
 });
 
@@ -44,4 +44,15 @@ watch(isSuccess, () => {
 const [name, nameAttrs] = defineField('name');
 const [email, emailAttrs] = defineField('email');
 const [fromSource, fromSourceAttrs] = defineField('from_source');
+
+const { mutate, isPending } = useMutation({
+  mutationKey: ['update customer', customerId],
+
+  mutationFn: (data: ICustomerFromState) =>
+    DB.updateDocument(DB_ID, COLLECTION_CUSTOMERS, customerId, data),
+});
+
+const onSubmit = handleSubmit(values => {
+  mutate(values)
+});
 </script>
