@@ -27,6 +27,26 @@
         class="input"
       />
 
+      <img
+        v-if="values.avatar_url || isUploadImagePanding"
+        :src="values.avatar_url"
+        alt="Логотип"
+        width="50"
+        height="50"
+        class="rounded-full my-2"
+      />
+      <div class="grid w-full max-w-sm items-center gap-1.5 input">
+        <label for="">
+          <div class="text-sm mb-2">Логотип</div>
+          <UiInput
+            type="file"
+            :onchange="(event:IinputFileEvent) => event?.target?.files?.length && 
+            uploadImage(event.target.files[0])"
+            :disabled="isUploadImagePanding"
+          />
+        </label>
+      </div>
+
       <UiButton :disabled="isPending" variant="secondary" class="mt-3">
         {{ isPending ? "Загрузка..." : "Сохранить" }}
       </UiButton>
