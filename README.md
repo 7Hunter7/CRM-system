@@ -19,15 +19,16 @@ CRM System - это современное веб-приложение, разр
 
 ## Используемые технологии
 
-*   Nuxt.js
-*   Vue.js
-*   Pinia
-*   Vue Query
-*   Appwrite
-*   Shadcn-vue
-*   Tailwind CSS
+- Nuxt.js
+- Vue.js
+- Pinia
+- Vue Query
+- Appwrite
+- Shadcn-vue
+- Tailwind CSS
 
 ## Структура проекта
+
 ```bash
 ├── .nuxt/                # Сгенерированные Nuxt.js файлы
 ├── .output/public/       # Скомпилированные статические файлы для деплоя
@@ -133,9 +134,10 @@ export const COLLECTION_DEALS = "ВАШ_APPWRITE_DEALS_COLLECTION_ID";
 export const COLLECTION_CUSTOMERS = "ВАШ_APPWRITE_CUSTOMERS_COLLECTION_ID";
 export const COLLECTION_COMMENTS = "ВАШ_APPWRITE_COMMENTS_COLLECTION_ID";
 export const STORAGE_ID = "ВАШ_APPWRITE_STORAGE_ID";
- ```
+```
 
 4.  Запуск приложения
+
 - Запустите сервер разработки:
 
 ```bash
@@ -150,10 +152,12 @@ npm run dev  # или yarn dev
 
 ```bash
 npm run build # или yarn build
+```
 
 ## Автор
 
-Ivan Kalugin Телеграмм: https://t.me/Ivan_Anatolievich_Kalugin
+Ivan Kalugin
+Телеграмм: https://t.me/Ivan_Anatolievich_Kalugin
 
 ## Лицензия
 
