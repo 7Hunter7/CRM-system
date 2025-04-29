@@ -16,27 +16,27 @@
           v-for="customer in (customers?.documents as unknown as ICustomer[])"
           :key="customer.$id"
         >
+          <UiTableCell>
+            <NuxtLink :href="`/customers/edit/${customer.$id}`">
+              <NuxtImg
+                :src="customer.avatar_url"
+                :alt="customer.name"
+                width="50"
+                height="50"
+                class="rounded-full"
+              />
+            </NuxtLink>
+          </UiTableCell>
+          <UiTableCell class="font-medium">
+            {{ customer.name }}
+          </UiTableCell>
+          <UiTableCell>
+            {{ customer.email }}
+          </UiTableCell>
+          <UiTableCell>
+            {{ customer.from_source }}
+          </UiTableCell>
         </UiTableRow>
-        <UiTableCell>
-          <NuxtLink :href="`/customers/edit/${customer.$id}`">
-            <NuxtImg
-              :src="customer.avatar_url"
-              :alt="customer.name"
-              width="50"
-              height="50"
-              class="routed-full"
-            />
-          </NuxtLink>
-        </UiTableCell>
-        <UiTableCell class="font-medium">
-          {{ customer.name }}
-        </UiTableCell>
-        <UiTableCell>
-          {{ customer.email }}
-        </UiTableCell>
-        <UiTableCell>
-          {{ customer.from_source }}
-        </UiTableCell>
       </UiTableBody>
     </UiTable>
   </div>
