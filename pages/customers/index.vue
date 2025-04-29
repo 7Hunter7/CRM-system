@@ -12,10 +12,7 @@
         </UiTableRow>
       </UiTableHeader>
       <UiTableBody>
-        <UiTableRow
-          v-for="customer in (customers?.documents as unknown as ICustomer[])"
-          :key="customer.$id"
-        >
+        <UiTableRow v-for="customer in customersData" :key="customer.$id">
           <UiTableCell>
             <NuxtLink :href="`/customers/edit/${customer.$id}`">
               <NuxtImg
@@ -63,4 +60,6 @@ const { data: customers, isLoading } = useQuery({
     DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS);
   },
 });
+const customersData = customers as unknown as ICustomer;
+console.log(customersData);
 </script>
